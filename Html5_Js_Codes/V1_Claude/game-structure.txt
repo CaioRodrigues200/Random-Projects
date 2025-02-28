@@ -1,0 +1,14 @@
+project/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── main.js                (Inicialização e loop principal)
+│   ├── player.js              (Gerenciamento do jogador)
+│   ├── bullet.js              (Gerenciamento de projéteis)
+│   ├── enemy.js               (Gerenciamento de inimigos comuns)
+│   ├── boss.js                (Sistema de boss baseado em cartas)
+│   ├── collision.js           (Sistema de detecção de colisões)
+│   ├── ui.js                  (Interface do usuário)
+│   ├── input.js               (Gerenciamento de entrada do usuário)
+│   └── utils.js               (Funções utilitárias)

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Battle Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        
+        canvas {
+            display: block;
+        }
+        
+        #ui-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-family: Arial, sans-serif;
+            user-select: none;
+        }
+        
+        #stats, #boss-timer {
+            margin: 5px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    
+    <div id="ui-container">
+        <div id="stats">Pontos: 0 | Vida: 100</div>
+        <div id="boss-timer">Boss em: 15s</div>
+    </div>
+    
+    <!-- Carregar os scripts em ordem correta -->
+    <script src="utils-js.js"></script>
+    <script src="debug-js.js"></script>
+    <script src="player-js.js"></script>
+    <script src="bullet-js-fixed.js"></script>
+    <script src="enemy-js.js"></script>
+    <script src="boss-js.js"></script>
+    <script src="collision-js.js"></script>
+    <script src="ui-js.js"></script>
+    <script src="game-js-fixed.js"></script>
+    
+    <script>
+        // Script de verificação para detectar problemas de carregamento
+        window.addEventListener('load', function() {
+            console.log("Verificando se todos os módulos foram carregados corretamente:");
+            
+            const modules = [
+                { name: "GAME", obj: window.GAME },
+                { name: "PLAYER", obj: window.PLAYER },
+                { name: "BULLET", obj: window.BULLET },
+                { name: "ENEMY", obj: window.ENEMY },
+                { name: "BOSS", obj: window.BOSS },
+                { name: "COLLISION", obj: window.COLLISION },
+                { name: "UI", obj: window.UI },
+                { name: "INPUT", obj: window.INPUT },
+                { name: "DEBUG", obj: window.DEBUG }
+            ];
+            
+            let allLoaded = true;
+            
+            modules.forEach(module => {
+                if (!module.obj) {
+                    console.error(`Módulo ${module.name} não foi carregado corretamente!`);
+                    allLoaded = false;
+                } else {
+                    console.log(`Módulo ${module.name} carregado com sucesso.`);
+                }
+            });
+            
+            if (allLoaded) {
+                console.log("Todos os módulos carregados com sucesso!");
+            } else {
+                console.error("Alguns módulos não foram carregados corretamente. Verifique os erros acima.");
+            }
+        });
+    </script>
+</body>
+</html>
